@@ -1,0 +1,35 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide empty members
+skinparam shadowing false
+' skinparam linetype ortho
+' skinparam linetype polyline
+
+class Component {
+    +operation()
+    +add(c: Component)
+    +remove(c: Component)
+    +getChild(index: int)
+}
+
+
+class Leaf {
+    +operation()
+}
+
+Component <|-- Leaf
+
+class Composite {
+    +operation()
+    +add(c: Component)
+    +remove(c: Component)
+    +getChild(index: int)
+}
+
+Component <|-- Composite : "                            "
+
+Composite  o--> "*" Component : child
+
+Client -> Component 
+
+@enduml

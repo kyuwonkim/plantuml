@@ -1,0 +1,13 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide empty members
+
+Invoker o- Command
+
+class Command {
+    +execute()
+}
+
+note "TODO: fill this uml later" as N1
+
+@enduml
