@@ -1,0 +1,86 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide empty members
+
+abstract Class Duck {
+    +performFly()
+    +performQuack()
+    +swim()
+    +display()
+    +setFlyBehavior()
+    +setQuackBehavior()
+    ..
+    // other duck methods
+}
+
+class MallardDuck {
+    +display()
+}
+
+Duck <|-- MallardDuck
+
+class RedheadDuck {
+    +display()
+}
+
+Duck <|-- RedheadDuck
+
+Duck <|-- "Other types\n of ducks"
+
+
+interface FlyBehavior {
+    +fly()
+}
+
+class FlyWithWings {
+    +fly()
+}
+
+FlyBehavior <|.. FlyWithWings
+
+class FlyNoWay {
+    +fly()
+}
+
+FlyBehavior <|.. FlyNoWay
+
+FlyBehavior <|.. "Other types\n of flyging"
+
+
+
+Duck -> FlyBehavior : flyBehavior (composition)
+
+interface QuackBehavior {
+    +quack()
+}
+
+Duck ----> QuackBehavior: quackBehavior (composition)
+
+class Quack {
+    +quack()
+}
+
+QuackBehavior <|.. Quack
+
+class Squeak {
+    +quack()
+}
+
+QuackBehavior <|.. Squeak
+
+class MuteSqueak {
+    +quack()
+}
+
+QuackBehavior <|.. MuteSqueak
+
+QuackBehavior <|.. "Other types \nof quacking"
+
+together {
+  interface FlyBehavior
+  interface QuackBehavior
+}
+
+FlyBehavior -[hidden]- QuackBehavior
+
+@enduml
