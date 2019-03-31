@@ -1,6 +1,7 @@
 @startuml
 skinparam classAttributeIconSize 0
 hide empty members
+skinparam shadowing false
 
 class AbstractFactory {
     +createProductA()
