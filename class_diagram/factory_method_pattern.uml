@@ -1,0 +1,40 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide empty members
+
+class Product {
+}
+
+class ConcreteProduct {
+}
+
+Product <|-- ConcreteProduct
+
+class Creator {
+    +factoryMethod()
+    +anOperation()
+}
+
+class ConcreteCreator {
+    +factoryMethod()
+}
+
+Creator <|-- ConcreteCreator
+
+Product <- Creator: product
+
+ConcreteProduct <- ConcreteCreator : <<create>>
+
+note right of Creator
+     ..
+    product = factoryMethod()
+     ..
+end note
+
+note right of ConcreteCreator
+     ..
+    return new ConcreteProduct()
+     ..
+end note
+
+@enduml
