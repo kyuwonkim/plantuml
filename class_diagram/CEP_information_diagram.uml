@@ -5,7 +5,7 @@ hide attributes
 skinparam shadowing false
 
 ' 여기를 보자
-class "Service Meta" {
+class "Service Metadata" {
 - Developer Info : "Service Provider"
 - URL
 - Language
@@ -75,10 +75,10 @@ class "Face Analytics" {
 
 
 Subscription "1" - "0..*" User : "        "
-Subscription "0" -- "0..*" "Service Meta" : "        "
+Subscription "0" -- "0..*" "Service Metadata" : "        "
 Device "0..*" -- "0..*" User
-' "Service Meta" "0..*" - "1" Tester : "        "
-"Service Provider" "1" - "1..*" "Service Meta" : "        "
+' "Service Metadata" "0..*" - "1" Tester : "        "
+"Service Provider" "1" - "1..*" "Service Metadata" : "        "
 Subscription "1"-- "0" "Service Provider"
 "Activity Analytics" "1"- "1" Subscription : "        "
 "TV Channel" "1" --"1" "Activity Analytics"
