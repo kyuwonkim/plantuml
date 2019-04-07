@@ -1,0 +1,54 @@
+@startuml
+skinparam shadowing false
+left to right direction
+
+' 4.5. Subscribing Smart Services -> SS
+(SS01. Browse Service) - :User:
+(SS02. Subscribe Service) -- :User:
+(SS03. Unsubscribe Service) -- :User:
+(SS04. Install\n Service App) -- :User:
+(SS05. Run Service\n on Local) -- :User:
+(SS06. Run Service\n on Cloud) -- :User:
+:User: -- (SS07. Check\n My Subscriptions)
+:User: -- (SS08. Write Review\n For Service)
+(SS09. Play Service) -- :User:
+note right of (SS09. Play Service)
+  According to this action,
+  the SST provides personalized
+  services using Activity Analytics
+end note
+(SS10. Stop\n Playing Service) -- :User:
+(SS10. Stop\n Playing Service) ..> (Stop Playing) : <<include>>
+:User: -- (SS11. Change Service)
+
+' 4.6. Centralized Payment Services -> PS
+:User: -- (PS01. Get Bill\n For Service)
+:User: -- (PS02. Pay With\n Creditcard)
+:User: -- (PS03. Browse\n Payment History)
+
+' 4.9. Setting Options -> SO
+:User: -- (SO1. Orgarnize\n Menu Layout)
+:User: -- (SO2. Enable\n Voice Cmd)
+:User: - (SO3. Disable\n Voice Cmd)
+
+' 4.10. Functionality of Smart Service Developers -> SD
+:Service Provider: - (SD01. Unregister Service)
+:Service Provider: -- (SD02. Unregister\n Service App)
+:Service Provider: -- (SD03. Update Service)
+:Service Provider: -- (SD04. Update\n Service App)
+:Service Provider: -- (SD05. Update\n Servie Description)
+(SD06. Update\n Billing Condition) -- :Service Provider:
+(SD07. Request App\n Conformance Test) -- :Service Provider:
+(SD08. Receive App\n Conformance Result) -- :Service Provider:
+(SD09. Browse\n Subscription Detail) -- :Service Provider:
+(SD10. Check\n Payment Detail) -- :Service Provider:
+(SD11. Get\n User Preferences) - :Service Provider:
+
+(SD12. Check App\n Conformance Requests) -- :Tester:
+:Tester: -- (SD13. Write App\n Conformance Result)
+
+' 4.11 Voice Communication -> VC
+:Microphones: -- (VC01. Send Sound)
+
+
+@enduml
