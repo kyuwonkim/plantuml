@@ -5,8 +5,8 @@ hide attributes
 skinparam shadowing false
 
 ' 여기를 보자
-class ServiceMeta {
-- Developer Info : ServiceProvider
+class "Service Meta" {
+- Developer Info : "Service Provider"
 - URL
 - Language
 - Rating
@@ -19,11 +19,11 @@ class ServiceMeta {
 }
 
 class Subscription {
-- Registered Services : ServiceMeta[]
+- Registered Services : "Service Meta"[]
 - Users For Each Service : User[]
 - Subscription starting dates
-- Subscribing Services For each user : ServiceMeta[]
-- ActivityAnalytics : ActivityAnalytics
+- Subscribing Services For each user : "Service Meta"[]
+- ActivityAnalytics : "Activity Analytics"
 }
 
 class User {
@@ -33,16 +33,16 @@ class User {
 - Credicard Info
 - Hobby
 - Devices : Device[]
-- TvChannel : TvChannel
+- TvChannel : "TV Channel"
 - Subscription : Subscription
 }
 
 class Tester {
-- TestingApps : ServiceMeta[]
+- TestingApps : "Service Meta"[]
 }
 
-class ServiceProvider {
-- Developed Services : ServiceMeta[]
+class "Service Provider" {
+- Developed Services : "Service Meta"[]
 - Subscription : Subscription
 }
 
@@ -52,34 +52,35 @@ class Device {
 - Serial #
 }
 
-class ActivityAnalytics {
+class "Activity Analytics" {
 - preferences
 }
 
-abstract class TvChannel {
+abstract class "TV Channel" {
+ActivityAnalytics : "Activity Analytics"
+}
+
+class "Broadcast TV Channel" {
 
 }
 
-class BroadcastTvChannel {
-
-}
-
-class CableTvChannel {
+class "Cable TV Channel" {
 
 }
 
 Subscription "1" - "0..*" User : "        "
-Subscription "0" -- "0..*" ServiceMeta : "        "
+Subscription "0" -- "0..*" "Service Meta" : "        "
 Device "0..*" -- "0..*" User
-ServiceMeta "0..*" - "1" Tester : "        "
-ServiceProvider "1" - "0..*" ServiceMeta : "        "
-Subscription "1"--o ServiceProvider
-ActivityAnalytics "1"- "0" Subscription : "        "
+"Service Meta" "0..*" - "1" Tester : "        "
+"Service Provider" "1" - "0..*" "Service Meta" : "        "
+Subscription "1"--o "Service Provider"
+"Activity Analytics" "1"- "0" Subscription : "        "
+"TV Channel" "0" --"1" "Activity Analytics"
 User <|-- Tester
 
-BroadcastTvChannel -|> TvChannel
-CableTvChannel --|> TvChannel
+"Broadcast TV Channel" -|> "TV Channel"
+"Cable TV Channel" --|> "TV Channel"
 
-TvChannel "1" -- "0" User
+"TV Channel" "1" -- "0" User
 
 @enduml
