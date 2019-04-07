@@ -69,6 +69,11 @@ class "Cable TV Channel" {
 
 }
 
+class "Face Analytics" {
+
+}
+
+
 Subscription "1" - "0..*" User : "        "
 Subscription "0" -- "0..*" "Service Meta" : "        "
 Device "0..*" -- "0..*" User
@@ -84,5 +89,7 @@ Subscription "1"-- "0" "Service Provider"
 
 "TV Channel" "1" -- "0" User
 User "1" -- "0" "Activity Analytics"
+
+User "1" -- "1" "Face Analytics"
 
 @enduml
