@@ -6,7 +6,7 @@ skinparam shadowing false
 
 ' 여기를 보자
 class ServiceMeta {
-- Developer Info : Provider
+- Developer Info : ServiceProvider
 - URL
 - Language
 - Rating
@@ -23,6 +23,7 @@ class Subscription {
 - Users For Each Service : User[]
 - Subscription starting dates
 - Subscribing Services For each user : ServiceMeta[]
+- ActivityAnalytics : ActivityAnalytics
 }
 
 class User {
@@ -31,7 +32,9 @@ class User {
 - Profiles
 - Credicard Info
 - Hobby
-- Device Info : Device[]
+- Devices : Device[]
+- TvChannel : TvChannel
+- Subscription : Subscription
 }
 
 class Tester {
@@ -40,11 +43,11 @@ class Tester {
 
 class ServiceProvider {
 - Developed Services : ServiceMeta[]
-- Analytics : ActivityAnalytics
+- Subscription : Subscription
 }
 
 class Device {
-- User Info : User
+- Users : User[]
 - SST Client Version
 - Serial #
 }
@@ -65,15 +68,18 @@ class CableTvChannel {
 
 }
 
-User "0..*" --  "1" Subscription : "        "
-Subscription -- "0..*" ServiceMeta : "        "
+Subscription "1" - "0..*" User : "        "
+Subscription "0" -- "0..*" ServiceMeta : "        "
 Device "0..*" -- "0..*" User
-ServiceMeta "0..*" -- "1" Tester
-ServiceProvider "1" - "*" ServiceMeta : "        "
-ActivityAnalytics "1"--o ServiceProvider
-ActivityAnalytics "1"-o Subscription
+ServiceMeta "0..*" - "1" Tester : "        "
+ServiceProvider "1" - "0..*" ServiceMeta : "        "
+Subscription "1"--o ServiceProvider
+ActivityAnalytics "1"- "0" Subscription : "        "
+User <|-- Tester
 
-TvChannel <|-- BroadcastTvChannel
-TvChannel <|-- CableTvChannel
+BroadcastTvChannel -|> TvChannel
+CableTvChannel --|> TvChannel
+
+TvChannel "1" -- "0" User
 
 @enduml
