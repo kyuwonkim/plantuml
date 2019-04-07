@@ -1,0 +1,79 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide empty members
+hide attributes 
+skinparam shadowing false
+
+' 여기를 보자
+class ServiceMeta {
+- Developer Info : Provider
+- URL
+- Language
+- Rating
+- Subscription Fee
+- Pricing model
+- isApproved : Boolean
+- Description
+- Review Comment
+- Tester: Tester
+}
+
+class Subscription {
+- Registered Services : ServiceMeta[]
+- Users For Each Service : User[]
+- Subscription starting dates
+- Subscribing Services For each user : ServiceMeta[]
+}
+
+class User {
+- Contact Info
+- Viewing History
+- Profiles
+- Credicard Info
+- Hobby
+- Device Info : Device[]
+}
+
+class Tester {
+- TestingApps : ServiceMeta[]
+}
+
+class ServiceProvider {
+- Developed Services : ServiceMeta[]
+- Analytics : ActivityAnalytics
+}
+
+class Device {
+- User Info : User
+- SST Client Version
+- Serial #
+}
+
+class ActivityAnalytics {
+- preferences
+}
+
+abstract class TvChannel {
+
+}
+
+class BroadcastTvChannel {
+
+}
+
+class CableTvChannel {
+
+}
+
+User "0..*" --  "1" Subscription : "        "
+Subscription -- "0..*" ServiceMeta : "        "
+Device "0..*" -- "0..*" User
+ServiceMeta "0..*" -- "1" Tester
+ServiceProvider "1" - "*" ServiceMeta : "        "
+ActivityAnalytics "1"--o ServiceProvider
+ActivityAnalytics "1"-o Subscription
+
+TvChannel <|-- BroadcastTvChannel
+TvChannel <|-- CableTvChannel
+
+@enduml
