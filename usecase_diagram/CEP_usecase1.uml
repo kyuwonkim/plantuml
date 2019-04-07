@@ -15,26 +15,22 @@ note top of (UP01. SignUp SST)
 end note
 
 ' 4.2. Receiving Broadcast TV Channels -> RB
-(RB01. Receive\n Broadcast\n TV Channels) -- :User:
-(RB01. Receive\n Broadcast\n TV Channels) ..> (Receive Channels) : <<include>>
+(Receive Channels) -- :User:
+(Receive Channels) <|-- (RB01. Receive\n Broadcast\n TV Channels)
 (Receive Channels) ..> (FR02. Verify Face) : <<include>>
-(RB02. Play\n Broadcast TV) -- :User:
-(RB02. Play\n Broadcast TV) ..> (Play Channel) : <<include>>
+(Play Channel) -- :User:
+(Play Channel) <|-- (RB02. Play\n Broadcast TV)
 (Play Channel) ..> (FR02. Verify Face) : <<include>>
-:User: -- (RB03. Stop Playing\n Broadcast TV)
-(Stop Playing) <.. (RB03. Stop Playing\n Broadcast TV) : <<include>>
-:User: -- (RB04. Change\n Broadcast TV)
-(Change Channel) <..(RB04. Change\n Broadcast TV) : <<include>>
+:User: -- (Stop Playing)
+(RB03. Stop Playing\n Broadcast TV) --|> (Stop Playing)
+:User: -- (Change Channel)
+(RB04. Change\n Broadcast TV) -|> (Change Channel)
 
 ' 4.3. Receiving Cable TV Channels -> RC
-(RC01. Receive\n Cable TV Channels) -- :User:
-(RC01. Receive\n Cable TV Channels) ..> (Receive Channels) : <<include>>
-(RC02. Play Cable TV) -- :User:
-(RC02. Play Cable TV) ..> (Play Channel) : <<include>>
-:User: -- (RC03. Stop\n Playing Cable TV)
-(Stop Playing) <.. (RC03. Stop\n Playing Cable TV) : <<include>>
-:User:-- (RC04. Change\n Cable TV)
-(Change Channel) <.. (RC04. Change\n Cable TV) : <<include>>
+(Receive Channels) <|- (RC01. Receive\n Cable TV Channels) 
+(Play Channel) <|- (RC02. Play Cable TV)
+(Stop Playing) <|- (RC03. Stop\n Playing Cable TV)
+(RC04. Change\n Cable TV) --|> (Change Channel)
 
 ' 4.4. Face Recognition -> FR
 (FR01. Enroll Face)
