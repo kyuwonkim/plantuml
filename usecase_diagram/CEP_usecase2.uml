@@ -33,24 +33,4 @@ end note
 :User: -- (SO2. Enable\n Voice Cmd)
 :User: - (SO3. Disable\n Voice Cmd)
 
-' 4.10. Functionality of Smart Service Developers -> SD
-:Service Provider: - (SD01. Unregister Service)
-:Service Provider: -- (SD02. Unregister\n Service App)
-:Service Provider: -- (SD03. Update Service)
-:Service Provider: -- (SD04. Update\n Service App)
-:Service Provider: -- (SD05. Update\n Servie Description)
-(SD06. Update\n Billing Condition) -- :Service Provider:
-(SD07. Request App\n Conformance Test) -- :Service Provider:
-(SD08. Receive App\n Conformance Result) -- :Service Provider:
-(SD09. Browse\n Subscription Detail) -- :Service Provider:
-(SD10. Check\n Payment Detail) -- :Service Provider:
-(SD11. Get\n User Preferences) - :Service Provider:
-
-(SD12. Check App\n Conformance Requests) -- :Tester:
-:Tester: -- (SD13. Write App\n Conformance Result)
-
-' 4.11 Voice Communication -> VC
-:Microphones: -- (VC01. Send Sound)
-
-
 @enduml

@@ -6,11 +6,12 @@ left to right direction
 (UP01. SignUp SST) -- :User:
 (UP01. SignUp SST) <.. (FR01. Enroll Face) : <<extend>>
 :User: -- (UP02. Update Profile)
-:User: -- (UP03. Update\n Creditcard Info.)
+(UP03. Update\n Creditcard Info.) -- :User:
 
-note right of (UP01. SignUp SST)
-  SignUp SST includes entering ID, contact,
-    loin, and Credicard information
+note top of (UP01. SignUp SST)
+  SignUp SST includes
+  entering ID, contact, loin,
+  and Credicard information
 end note
 
 ' 4.2. Receiving Broadcast TV Channels -> RB
@@ -20,20 +21,20 @@ end note
 (RB02. Play\n Broadcast TV) -- :User:
 (RB02. Play\n Broadcast TV) ..> (Play Channel) : <<include>>
 (Play Channel) ..> (FR02. Verify Face) : <<include>>
-(RB03. Stop Playing\n Broadcast TV) -- :User:
-(RB03. Stop Playing\n Broadcast TV) ..> (Stop Playing) : <<include>>
-(RB04. Change\n Broadcast TV) -- :User:
-(RB04. Change\n Broadcast TV) ..> (Change Channel) : <<include>>
+:User: -- (RB03. Stop Playing\n Broadcast TV)
+(Stop Playing) <.. (RB03. Stop Playing\n Broadcast TV) : <<include>>
+:User: -- (RB04. Change\n Broadcast TV)
+(Change Channel) <..(RB04. Change\n Broadcast TV) : <<include>>
 
 ' 4.3. Receiving Cable TV Channels -> RC
 (RC01. Receive\n Cable TV Channels) -- :User:
 (RC01. Receive\n Cable TV Channels) ..> (Receive Channels) : <<include>>
 (RC02. Play Cable TV) -- :User:
 (RC02. Play Cable TV) ..> (Play Channel) : <<include>>
-(RC03. Stop\n Playing Cable TV) -- :User:
-(RC03. Stop\n Playing Cable TV) ..> (Stop Playing) : <<include>>
-(RC04. Change\n Cable TV) -- :User:
-(RC04. Change\n Cable TV) ..> (Change Channel) : <<include>>
+:User: -- (RC03. Stop\n Playing Cable TV)
+(Stop Playing) <.. (RC03. Stop\n Playing Cable TV) : <<include>>
+:User:-- (RC04. Change\n Cable TV)
+(Change Channel) <.. (RC04. Change\n Cable TV) : <<include>>
 
 ' 4.4. Face Recognition -> FR
 (FR01. Enroll Face)
@@ -42,8 +43,5 @@ end note
 note left of (FR03. Leave\n Viewing Area)
   Face Logout
 end note
-
-:Camera: -- (FR03. Send Image)
-
 
 @enduml
