@@ -37,9 +37,9 @@ class User {
 - Subscription : Subscription
 }
 
-class Tester {
-- TestingApps : "Service Meta"[]
-}
+' class Tester {
+' - TestingApps : "Service Meta"[]
+' }
 
 class "Service Provider" {
 - Developed Services : "Service Meta"[]
@@ -54,6 +54,7 @@ class Device {
 
 class "Activity Analytics" {
 - preferences
+- TvChannel : "TV Channel"
 }
 
 abstract class "TV Channel" {
@@ -71,16 +72,17 @@ class "Cable TV Channel" {
 Subscription "1" - "0..*" User : "        "
 Subscription "0" -- "0..*" "Service Meta" : "        "
 Device "0..*" -- "0..*" User
-"Service Meta" "0..*" - "1" Tester : "        "
-"Service Provider" "1" - "0..*" "Service Meta" : "        "
-Subscription "1"--o "Service Provider"
-"Activity Analytics" "1"- "0" Subscription : "        "
-"TV Channel" "0" --"1" "Activity Analytics"
-User <|-- Tester
+' "Service Meta" "0..*" - "1" Tester : "        "
+"Service Provider" "1" - "1..*" "Service Meta" : "        "
+Subscription "1"-- "0" "Service Provider"
+"Activity Analytics" "1"- "1" Subscription : "        "
+"TV Channel" "1" --"1" "Activity Analytics"
+' User <|-- Tester
 
 "Broadcast TV Channel" -|> "TV Channel"
 "Cable TV Channel" --|> "TV Channel"
 
 "TV Channel" "1" -- "0" User
+User "1" -- "0" "Activity Analytics"
 
 @enduml
