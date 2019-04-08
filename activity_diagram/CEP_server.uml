@@ -1,0 +1,82 @@
+@startuml
+start
+:SST Cloud Server: Intiailize server;
+
+fork
+
+:Gather new user datasets
+ from SST Client;
+ 
+:Train new ML model;
+
+:Deploy new ML model
+ for user preferences
+ and pattern;
+
+fork again
+
+repeat:Receive a subcription-related request;
+
+  if ("Register 
+   Service") then (yes)
+    if (Conformance Test?) then (pass)
+      :Add Service
+       to Registry;
+    else (not pass)
+      :request
+       conformance;
+      detach
+    endif
+    
+  elseif ("Unregister
+   Service") then (yes)
+    :Remove Service
+     from Registry;
+
+  elseif ("Get Service
+   list") then (yes)
+    :Get list
+     from Registry;
+    :Deliver the list; 
+  else (Handle other
+   requests)
+  endif
+
+repeat while (quit?) is (no)
+
+fork again
+
+repeat:Receive a payment-related request;
+
+  if ("Get Bill
+   for Service") then (yes)
+    :Check user's
+      subscribing services;
+    :Accumulate fee
+      for all services;
+    :Report bill;
+  elseif ("Pay With
+   Creditcard")
+    :Perform "Get Bill
+   for Service";
+    :Get Credidcard Info
+     from User Profile;
+    :Pay the amount
+     with the card;
+    :Save payment history;
+  elseif ("Browse
+   Payment History") then (yes)
+    :Gather payment
+     history;
+    :Send Payment
+     history;
+  else (Handle other
+   requests)
+  endif
+
+repeat while (quit?) is (no)
+
+endfork
+
+stop
+@enduml

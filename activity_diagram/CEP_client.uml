@@ -1,7 +1,6 @@
 @startuml
 start
-:Intiailize Device;
-:Display Menu;
+:SST Client: Intiailize device & show screen;
 
 fork
 
@@ -27,6 +26,15 @@ repeat while (quit?) is (no)
 
 fork again
 
+while (CPU idle?) is (yes)
+  :Gather user
+   activity & log;
+  :send to
+   to Cloud;
+endwhile
+
+fork again
+
 repeat:Receive an Event;
 
   -> if the "Event" is;
@@ -41,11 +49,12 @@ repeat:Receive an Event;
      features in Anaytics;
     :Receive
      User info.;
-    :Store user profile;
+    :Send user profile
+     to Cloud;
     :Welcome new user;
   elseif ("Browse Service") then (yes)
     :Get service list
-    from the server;
+    from Cloud;
 
     :Show Smart
      Services;
@@ -56,7 +65,8 @@ repeat:Receive an Event;
 
     :Show TV Channels
      for Broadcast/Cable;
-  else (default)
+  else (Handle other
+   events)
   endif
 
 repeat while (quit?) is (no)
