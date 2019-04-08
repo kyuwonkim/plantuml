@@ -5,18 +5,28 @@ start
 
 fork
 
-repeat
+repeat:Verify Face;
 
-:Fectch Images;
+:Fetch Images;
 
 :Recognize faces;
 
 :Count enrolled faces;
 
-repeat while (Enrolled faces # > 1)
-
-' TODO: use profiles for right search
-:Choose one;
+if (Enrolled faces # == 0) then (yes)
+  :Close any
+   open session;
+  stop
+else (no)
+  ' TODO: use profiles for right search
+  :Choose
+   top-rank face;
+  if (Different face\n from Session?) then (yes)
+    :Greet user;
+  endif
+  :Renew session;
+endif
+repeat while (quit?) is (no)
 
 fork again
 
