@@ -1,0 +1,26 @@
+@startuml
+start
+:Intiailize Device;
+:Display Menu;
+
+fork
+
+repeat
+
+:Fectch Images;
+
+:Recognize faces;
+
+:Count enrolled faces;
+
+repeat while (Enrolled faces # > 1)
+
+' TODO: use profiles for right search
+:Choose one;
+
+fork again
+
+endfork
+
+stop
+@enduml
