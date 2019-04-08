@@ -12,9 +12,9 @@ left to right direction
 :User: -- (SS07. Check\n My Subscriptions)
 :User: -- (SS08. Write Review\n For Service)
 (SS09. Play Service) -- :User:
-(SS09. Play Service) ..> (FR02. Verify Face) : <<include>>
-(FR02. Verify Face) <. (SS01. Browse Service) : <<include>>
-note top of (FR02. Verify Face)
+(SS09. Play Service) ..> (FR02. Show Face) : <<include>>
+(FR02. Show Face) <. (SS01. Browse Service) : <<include>>
+note top of (FR02. Show Face)
   According to this action,
   the SST provides personalized
   services using Activity Analytics

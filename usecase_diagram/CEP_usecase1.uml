@@ -17,10 +17,10 @@ end note
 ' 4.2. Receiving Broadcast TV Channels -> RB
 (Receive Channels) -- :User:
 (Receive Channels) <|-- (RB01. Receive\n Broadcast\n TV Channels)
-(Receive Channels) ..> (FR02. Verify Face) : <<include>>
+(Receive Channels) ..> (FR02. Show Face) : <<include>>
 (Play Channel) -- :User:
 (Play Channel) <|-- (RB02. Play\n Broadcast TV)
-(Play Channel) ..> (FR02. Verify Face) : <<include>>
+(Play Channel) ..> (FR02. Show Face) : <<include>>
 :User: -- (Stop Playing)
 (RB03. Stop Playing\n Broadcast TV) --|> (Stop Playing)
 :User: -- (Change Channel)
@@ -34,10 +34,14 @@ end note
 
 ' 4.4. Face Recognition -> FR
 (FR01. Enroll Face)
-(FR02. Verify Face)
+(FR02. Show Face)
 :User: -- (FR03. Leave\n Viewing Area)
 note left of (FR03. Leave\n Viewing Area)
-  Face Logout
+  Close session
+end note
+
+note right of (FR02. Show Face)
+  Open session
 end note
 
 @enduml

@@ -5,30 +5,62 @@ start
 
 fork
 
-repeat:Verify Face;
+repeat:Fetch image;
+  :Recognize faces;
 
-:Fetch Images;
+  :Count enrolled faces;
 
-:Recognize faces;
-
-:Count enrolled faces;
-
-if (Enrolled faces # == 0) then (yes)
-  :Close any
-   open session;
-  stop
-else (no)
-  ' TODO: use profiles for right search
-  :Choose
-   top-rank face;
-  if (Different face\n from Session?) then (yes)
-    :Greet user;
+  if (count == 0) then (yes)
+    :Close any
+     open session;
+  else (no)
+    ' TODO: use profiles for right search
+    :Choose
+     top-rank face;
+    if (Different face\n from Session?) then (yes)
+      :Greet user;
+    else (no)
+    endif
+    :Renew session;
   endif
-  :Renew session;
-endif
 repeat while (quit?) is (no)
 
 fork again
+
+repeat:Receive an Event;
+
+  -> if the "Event" is;
+
+  if ("Sign Up SST") then (yes)
+    repeat:Start 'Enroll Face';
+      :Fetch image;
+      :Count 
+       unenrolled faces;
+    repeat while (count == 1) is (no)
+    :Store face
+     features in Anaytics;
+    :Receive
+     User info.;
+    :Store user profile;
+    :Welcome new user;
+  elseif ("Browse Service") then (yes)
+    :Get service list
+    from the server;
+
+    :Show Smart
+     Services;
+  elseif ("Broadcast
+   TV Channels
+   for Broadcast/Cable") then (yes)
+    :Get channel list;
+
+    :Show TV Channels
+     for Broadcast/Cable;
+  else (default)
+  endif
+
+repeat while (quit?) is (no)
+ 
 
 endfork
 

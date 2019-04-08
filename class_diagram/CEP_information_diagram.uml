@@ -73,6 +73,7 @@ class "Face Analytics" {
 
 }
 
+class Session
 
 Subscription "1" - "0..*" User : "        "
 Subscription "0" -- "0..*" "Service Metadata" : "        "
@@ -91,5 +92,7 @@ Subscription "1"-- "0" "Service Provider"
 User "1" -- "0" "Activity Analytics"
 
 User "1" -- "1" "Face Analytics"
+
+User "1" - Session
 
 @enduml
