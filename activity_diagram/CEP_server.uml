@@ -28,10 +28,8 @@ repeat:Receive a subcription-related request;
       detach
     endif
     
-  elseif ("Unregister
-   Service") then (yes)
-    :Remove Service
-     from Registry;
+  elseif ("Manage Service") then (yes)
+    :Manage Service;
 
   elseif ("Get Service
    list") then (yes)

@@ -58,6 +58,12 @@ repeat:Receive an Event;
 
     :Show Smart
      Services;
+  elseif ("Manage Service") then (yes)
+    :Manage Service;
+  elseif ("Manage
+   User Profile") then (yes)
+    :Manage
+    User Profile;
   elseif ("Broadcast
    TV Channels
    for Broadcast/Cable") then (yes)
