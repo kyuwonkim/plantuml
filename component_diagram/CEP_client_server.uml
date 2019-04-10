@@ -1,0 +1,13 @@
+@startuml
+
+:User:
+:Service\nProvider: as SP 
+node "SST Client Tier" as Client {
+}
+node "SST Cloud Server Tier" as Server {
+}
+
+:User: -[hidden] Client
+Client - Server
+Server -[hidden] SP
+@enduml
