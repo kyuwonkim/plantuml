@@ -1,9 +1,16 @@
 @startuml
-left to right direction
 
 :User:
 :Service\nProvider: as SP 
-node "SST Client Tier" as Client {
+database  "SST Client Tier" as Client {
+  component View {
+  }
+  component Control {
+  }
+  component Model {
+  }
+  View -[hidden]-> Control
+Control-->Model
 }
 node "SST Cloud Server Tier" as Server {
 }
@@ -11,5 +18,7 @@ node "SST Cloud Server Tier" as Server {
 :User: - Client
 SP - Server
 Client -- Server
+
+
 
 @enduml
