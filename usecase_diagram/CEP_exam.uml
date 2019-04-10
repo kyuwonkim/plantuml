@@ -1,0 +1,13 @@
+@startuml
+skinparam shadowing false
+left to right direction
+actor User
+
+rectangle  {
+User -- (SignUp SST)
+(SignUp SST) <.. (Enroll Face) : <<extend>>
+User -- (Update Profile)
+User -- (Update\n Creditcard Info.)
+
+
+@enduml
