@@ -4,6 +4,8 @@ start
 
 fork
 
+-> Initiate an agent\n for learning user preferences;
+
 repeat:Start learning\n analytics;
 
 if (New user datasets
@@ -20,6 +22,7 @@ repeat while(quit?) is (no)
 
 fork again
 
+-> Initiate an agent\n for managing subscription;
 repeat:Receive a subcription-related request;
 
   if ("Register Service"?) then (yes)
@@ -27,13 +30,13 @@ repeat:Receive a subcription-related request;
       :Add Service
        to Registry;
     else (not pass)
-      :request
+      :Request
        conformance;
       detach
     endif
     
-  elseif ("Manage Service"?) then (yes)
-    :Manage Service;
+  elseif ("Manage Service\n and app"?) then (yes)
+    :Manage Service\n and app;
 
   elseif ("Get service\n list"?) then (yes)
     :Get list
@@ -47,29 +50,24 @@ repeat while (quit?) is (no)
 
 fork again
 
-repeat:Receive a payment-related request;
+repeat:Receive a general request;
 
-  if ("Get Bill for Service") then (yes)
-    :Check user's
-      subscribing services;
-    :Accumulate fee
-      for all services;
-    :Report bill;
-  elseif ("Pay With
-   Creditcard")
-    :Perform "Get Bill
-   for Service";
-    :Get Credidcard Info
-     from User Profile;
-    :Pay the amount
-     with the card;
-    :Save payment\n history;
-  elseif ("Browse
-   Payment History") then (yes)
-    :Gather payment
+  if ("Request\n conformance test") then (yes)
+    :Store the app;
+    :Inform Tester\n of new app;
+  elseif ("Receive app\n conformance\n result") then (yes)
+    :Report\n Tester's review;
+  elseif ("Check app\n conformance\n request") then (yes)
+    :Show\n Requested apps;
+  elseif ("Write app\n conformance\n result") then (yes)
+    :Receive Tester's\n review;
+    :Inform Developer\n of "Test Done";
+  elseif ("Check\n Payment Detail") then (yes)
+    :Gather app list;
+    :Gather purchase
      history;
-    :Send Payment
-     history;
+    :Calculate;
+    :Report\n payment detail;
   else (Handle other
    requests)
   endif
