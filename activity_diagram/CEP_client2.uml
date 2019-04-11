@@ -4,52 +4,6 @@ start
 
 fork
 
--> Initiate an agent\n for face recognition;
-repeat:Fetch image;
-  :Recognize faces;
-
-  :Count enrolled faces;
-
-  if (count == 0) then (yes)
-    :Close any
-     open session;
-  else (no)
-    :Choose
-     top-rank face;
-    if (Different face\n from Session?) then (yes)
-      :Greet user;
-    else (no)
-    endif
-    :Renew session;
-  endif
-repeat while (quit?) is (no)
-
-fork again
-
--> Initiate an agent\n for voice recognition;
-repeat:Fetch sound;
-  :Recognize voice;
-
-  if ("Wakeup word"?) then (no)
-  else (yes)
-    :Record following\n command;
-    :Send command\nto a voice\n **smart service**;
-    :Get response\nfrom the service;
-    :Perform its action;
-  endif
-repeat while (quit?) is (no)
-
-fork again
-
-while (CPU idle?) is (yes)
-  :Gather user
-   activity & log;
-  :send to
-   to Cloud;
-endwhile
-
-fork again
-
 ->Initiate UI thread;
 
 repeat:Receive an Request;
