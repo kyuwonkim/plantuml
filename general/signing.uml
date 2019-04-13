@@ -1,0 +1,14 @@
+@startuml
+
+skinparam defaultTextAlignment center
+
+title Signing
+
+rectangle "X\n(Original)" as A
+rectangle "Y\n(Encrypted)" as B
+rectangle "X\n(Decrypted)" as C
+
+A -> B: A_""secret""
+B -> C: A_""public""
+
+@enduml
