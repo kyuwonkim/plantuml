@@ -4,7 +4,7 @@ start
 
 fork
 
--> Initiate an agent for face recognition;
+-> Initiate Identity Agent;
 repeat:Fetch image;
   :Recognize faces\n using stored\n face features;
 
