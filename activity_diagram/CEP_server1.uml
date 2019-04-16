@@ -1,0 +1,53 @@
+@startuml
+start
+:SST Cloud Server: Intiailize server;
+
+fork
+
+-> Initiate an agent\n for learning user preferences;
+
+repeat:Start learning\n analytics;
+
+if (New user datasets
+ from SST Client?) then ([yes])
+
+  :Train new ML model;
+
+  :Deploy new ML model
+   for user preferences
+   and patterns;
+else ([no]) 
+endif 
+repeat while(quit?) is ([no])
+
+fork again
+
+-> Initiate an agent for managing subscription;
+repeat:Receive a subcription-related request;
+
+  if ("Register Service"?) then ([yes])
+    if (Conformance Test?) then ([pass])
+      :Add Service
+       to Registry;
+    else ([not pass])
+      :Request
+       conformance;
+    endif
+    
+  elseif ("Manage Service\n and app"?) then ([yes])
+    :Manage Service\n and app;
+
+  elseif ("Get service\n list"?) then ([yes])
+    :Get list
+     from Registry;
+    :Deliver the list; 
+  else (Handle other
+   requests)
+  endif
+
+repeat while (quit?) is ([no])
+
+endfork
+
+stop
+@enduml

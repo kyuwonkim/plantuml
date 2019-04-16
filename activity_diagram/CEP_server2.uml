@@ -1,0 +1,34 @@
+@startuml
+start
+:SST Cloud Server: Intiailize server;
+
+fork
+
+repeat:Receive a general request;
+
+  if ("Request\n conformance test") then ([yes])
+    :Store the app;
+    :Inform Tester\n of new app;
+  elseif ("Receive app\n conformance\n result") then ([yes])
+    :Report\n Tester's review;
+  elseif ("Check app\n conformance\n request") then ([yes])
+    :Show\n Requested apps;
+  elseif ("Write app\n conformance\n result") then ([yes])
+    :Receive Tester's\n review;
+    :Inform Developer\n of "Test Done";
+  elseif ("Check\n Payment Detail") then ([yes])
+    :Gather app list;
+    :Gather purchase
+     history;
+    :Calculate;
+    :Report\n payment detail;
+  else (Handle other
+   requests)
+  endif
+
+repeat while (quit?) is ([no])
+
+endfork
+
+stop
+@enduml

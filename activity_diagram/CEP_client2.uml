@@ -10,48 +10,47 @@ repeat:Receive an Request;
 
   -> if the "Request" is;
 
-  if ("Sign Up for SST") then (yes)
+  if ("Sign Up for SST") then ([yes])
     repeat:Start 'Enroll Face';
       :Fetch image;
       :Count 
        unenrolled faces;
-    repeat while (count == 1) is (no)
-    :Store face
-     features in Anaytics;
+    repeat while (count == 1) is ([no])
+    :Store face features\n in Anaytics;
     :Receive
      User info.;
     :Send user profile
      to Cloud;
     :Welcome new user;
-  elseif ("Browse Service") then (yes)
+  elseif ("Browse Service") then ([yes])
     :Get service list
     from Cloud;
 
     :Show Smart
      Services;
-  elseif ("Run Service\n on Local/Cloud") then (yes)
+  elseif ("Run Service\n on Local/Cloud") then ([yes])
     :Get service info.
     from Cloud;
 
     :Play the service;
-  elseif ("Manage Service\n and app") then (yes)
+  elseif ("Manage Service\n and app") then ([yes])
     :Manage Service\n and app;
-  elseif ("Receive\nTV Channels for\n Broadcast/Cable") then (yes)
+  elseif ("Receive\nTV Channels for\n Broadcast/Cable") then ([yes])
     :Get channel list;
 
     :Show TV Channels
      for Broadcast/Cable;
-  elseif ("Change channel") then (yes)
+  elseif ("Change channel") then ([yes])
     :Change channel;
-  elseif ("Enable/Disable\n voice command") then (yes)
+  elseif ("Enable/Disable\n voice command") then ([yes])
     :Ask voice\n recognition agent\n to pause/resume;
-  elseif ("Manage user profile",\nor\n "Browse payment history"\nor\n  "Update credicard info"\nor\n "Get bill for service"\nor\n "Pay with credicard"\nor\n "Organize menu Layout") then (yes)
+  elseif ("Manage user profile",\nor\n "Browse payment history"\nor\n  "Update credicard info"\nor\n "Get bill for service"\nor\n "Pay with credicard"\nor\n "Organize menu Layout") then ([yes])
     :Do the requested action;
   else (Handle other
    requests)
   endif
 
-repeat while (quit?) is (no)
+repeat while (quit?) is ([no])
  
 
 endfork
