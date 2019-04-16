@@ -1,0 +1,60 @@
+@startuml
+
+' skinparam Padding 0
+
+skinparam rectangle {
+	roundCorner 15
+}
+
+node "SST Client Tier" as client {
+  together {
+  rectangle "TV View Layer" as tvView {
+  }
+  rectangle "Control Layer" as tvControlView {
+  }
+  rectangle "Model Layer" as tvModelView {
+  }
+  }
+}
+
+database "Cache DB" as cacheDB {
+
+}
+
+node "SST Cloud\n Server Tier" as server {
+together {
+  together "Server View" as serverView {
+    rectangle "Staff\nConsole" as StaffConsole {
+    }
+    interface A
+    rectangle "Provider\nConsole" as ProviderConsole {
+    }
+    StaffConsole - A
+    A - ProviderConsole
+  }
+  rectangle "Control Layer" as serverControlView {
+  }
+  rectangle "Model Layer" as serverModelView {
+  }
+}
+  'hide A
+}
+
+:User: -- tvView
+tvView -- tvControlView
+tvControlView -- tvModelView
+tvModelView -- cacheDB
+
+:Tester:
+:Service\nProvider: as SP
+
+:Tester: -- StaffConsole
+SP -- ProviderConsole
+
+tvControlView -[hidden] serverControlView
+
+A -- serverControlView
+serverControlView -- serverModelView
+StaffConsole -[hidden] ProviderConsole
+
+@enduml
