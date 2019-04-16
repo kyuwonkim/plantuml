@@ -2,6 +2,8 @@
 skinparam classAttributeIconSize 0
 hide empty members
 hide attributes 
+hide circle
+
 skinparam shadowing false
 
 ' 여기를 보자
@@ -61,14 +63,6 @@ abstract class "TV Channel" {
 ActivityAnalytics : "Activity Analytics"
 }
 
-class "Broadcast TV Channel" {
-
-}
-
-class "Cable TV Channel" {
-
-}
-
 class "Face Analytics" {
 
 }
@@ -76,8 +70,8 @@ class "Face Analytics" {
 class Session
 
 Subscription "1" - "0..*" User : "        "
-Subscription "0" -- "0..*" "Service Metadata" : "        "
-Device "0..*" -- "0..*" User
+Subscription "0" -- "1..*" "Service Metadata" : "        "
+User "0..*" -- "0..*" Device :  "        "
 ' "Service Metadata" "0..*" - "1" Tester : "        "
 "Service Provider" "1" - "1..*" "Service Metadata" : "        "
 Subscription "1"-- "0" "Service Provider"
@@ -85,8 +79,8 @@ Subscription "1"-- "0" "Service Provider"
 "TV Channel" "1" --"1" "Activity Analytics"
 ' User <|-- Tester
 
-"Broadcast TV Channel" -|> "TV Channel"
-"Cable TV Channel" --|> "TV Channel"
+' "Broadcast TV Channel" -|> "TV Channel"
+' "Cable TV Channel" --|> "TV Channel"
 
 "TV Channel" "1" -- "0" User
 User "1" -- "0" "Activity Analytics"
