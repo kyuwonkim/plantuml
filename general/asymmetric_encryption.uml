@@ -1,0 +1,14 @@
+@startuml
+
+skinparam defaultTextAlignment center
+
+title Asymmetric Encryption
+
+rectangle "X\n(Original)" as A
+rectangle "Y\n(Encrypted)" as B
+rectangle "X\n(Decrypted)" as C
+
+A -> B: B_""public""
+B -> C: B_""secret""
+
+@enduml
