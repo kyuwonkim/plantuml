@@ -2,46 +2,59 @@
 skinparam shadowing false
 left to right direction
 
-' 4.8. User Profile Management -> UP
-(UP01. SignUp SST) -- :User:
-(UP01. SignUp SST) <.. (FR01. Enroll Face) : <<extend>>
-:User: -- (UP02. Update Profile)
-(UP03. Update\n Creditcard Info.) -- :User:
-
-note top of (UP01. SignUp SST)
-  SignUp SST includes
-  entering ID, contact, loin,
-  and Credicard information
-end note
-
 ' 4.2. Receiving Broadcast TV Channels -> RB
-(Receive Channels) -- :User:
-(Receive Channels) <|-- (RB01. Receive\n Broadcast\n TV Channels)
-(Receive Channels) ..> (FR02. Show Face) : <<include>>
-(Play Channel) -- :User:
-(Play Channel) <|-- (RB02. Play\n Broadcast TV)
-(Play Channel) ..> (FR02. Show Face) : <<include>>
-:User: -- (Stop Playing)
-(RB03. Stop Playing\n Broadcast TV) --|> (Stop Playing)
-:User: -- (Change Channel)
-(RB04. Change\n Broadcast TV) -|> (Change Channel)
+(RB01. Receive\n Broadcast\n TV Channels) as RB01
+(RB02. Play\n Broadcast TV) as RB02
+(RB03. Stop Playing\n Broadcast TV) as RB03
+(RB04. Change\n Broadcast TV) as RB04
 
 ' 4.3. Receiving Cable TV Channels -> RC
-(Receive Channels) <|- (RC01. Receive\n Cable TV Channels) 
-(Play Channel) <|- (RC02. Play Cable TV)
-(Stop Playing) <|- (RC03. Stop\n Playing Cable TV)
-(RC04. Change\n Cable TV) --|> (Change Channel)
+(RC01. Receive\n Cable TV Channels) as RC01
+(RC02. Play Cable TV) as RC02
+(RC03. Stop\n Playing Cable TV) as RC03
 
 ' 4.4. Face Recognition -> FR
-(FR01. Enroll Face)
-(FR02. Show Face)
-:User: -- (FR03. Leave\n Viewing Area)
-note left of (FR03. Leave\n Viewing Area)
-  Close session
+(FR01. Enroll Face) as FR01
+(FR02. Show Face) as FR02
+(FR03. Leave\n Viewing Area) as FR03
+
+' 4.8. User Profile Management -> UP
+(UP01. SignUp SST) as UP01
+(UP02. Retrieve Profile) as UP02
+(UP03. Update Profile) as UP03
+(UP04. Update\n Creditcard Info.) as UP04
+
+''''''''''''''''
+UP01 -- :User:
+UP01 <.. FR01 : <<extend>>
+UP02 -- :User:
+:User: -- UP03
+UP04 -- :User:
+:User: -- (UP05. Deactivate User)
+
+note top of UP01
+  SignUp SST includes
+  entering ID, contact, loin,
+  and creditcard information
 end note
 
-note right of (FR02. Show Face)
-  Open session
-end note
+
+(Receive Channels) -- :User:
+(Receive Channels) <|-- RB01
+(Receive Channels) ..> FR02 : <<include>>
+(Play Channel) -- :User:
+(Play Channel) <|-- RB02
+(Play Channel) ..> FR02 : <<include>>
+:User: -- (Stop Playing)
+RB03 --|> (Stop Playing)
+:User: -- (Change Channel)
+RB04 -|> (Change Channel)
+
+(Receive Channels) <|- RC01
+(Play Channel) <|- RC02
+(Stop Playing) <|- RC03
+(RC04. Change\n Cable TV) --|> (Change Channel)
+
+:User: -- FR03
 
 @enduml

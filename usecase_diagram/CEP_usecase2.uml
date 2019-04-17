@@ -2,35 +2,58 @@
 skinparam shadowing false
 left to right direction
 
+' 4.4. Face Recognition -> FR
+(FR02. Show Face) as FR02
+
 ' 4.5. Subscribing Smart Services -> SS
-(SS01. Browse Service) - :User:
-(SS02. Subscribe Service) -- :User:
-(SS03. Unsubscribe Service) -- :User:
-(SS04. Install\n Service App) -- :User:
-(SS05. Run Service\n on Local) -- :User:
-(SS06. Run Service\n on Cloud) -- :User:
-:User: -- (SS07. Check\n My Subscriptions)
-:User: -- (SS08. Write Review\n For Service)
-(SS09. Play Service) -- :User:
-(SS09. Play Service) ..> (FR02. Show Face) : <<include>>
-(FR02. Show Face) <. (SS01. Browse Service) : <<include>>
-note top of (FR02. Show Face)
+(SS01. Browse Service) as SS01
+(SS02. Subscribe Service) as SS02
+(SS03. Unsubscribe Service) as SS03
+(SS04. Install\n Service App) as SS04
+(SS05. Run Service\n on Local) as SS05
+(SS06. Run Service\n on Cloud) as SS06
+(SS07. Check\n My Subscriptions) as SS07
+(SS08. Write Review\n For Service) as SS08
+(SS09. Play Service) as SS09
+(SS10. Stop\n Playing Service) as SS10
+(SS11. Change Service) as SS11
+
+' 4.6. Centralized Payment Services -> PS
+(PS01. Get Bill\n For Service) as PS01
+(PS02. Pay With\n Creditcard) as PS02
+(PS03. Browse\n Payment History) as PS03
+
+' 4.9. Setting Options -> SO
+(SO01. Orgarnize\n Menu Layout) as SO01
+(SO02. Enable\n Voice Command) as SO02
+(SO03. Disable\n Voice Command) as SO03
+
+SS01 - :User:
+SS02 -- :User:
+SS03 -- :User:
+SS04 -- :User:
+SS05 -- :User:
+SS06 -- :User:
+:User: -- SS07
+:User: -- SS08
+SS09 -- :User:
+SS09 ..> FR02 : <<include>>
+FR02 <. SS01 : <<include>>
+note top of FR02
   Reacting to this action,
   the SST provides personalized
   services using Activity Analytics
 end note
-(SS10. Stop\n Playing Service) -- :User:
-(SS10. Stop\n Playing Service) ..> (Stop Playing) : <<include>>
-:User: -- (SS11. Change Service)
+SS10 -- :User:
+SS10 ..> (Stop Playing) : <<include>>
+:User: -- SS11
 
-' 4.6. Centralized Payment Services -> PS
-:User: -- (PS01. Get Bill\n For Service)
-:User: -- (PS02. Pay With\n Creditcard)
-:User: -- (PS03. Browse\n Payment History)
+:User: -- PS01
+:User: -- PS02
+:User: -- PS03
 
-' 4.9. Setting Options -> SO
-:User: -- (SO1. Orgarnize\n Menu Layout)
-:User: -- (SO2. Enable\n Voice Cmd)
-:User: - (SO3. Disable\n Voice Cmd)
+:User: -- SO01
+:User: -- SO02
+:User: - SO03
 
 @enduml

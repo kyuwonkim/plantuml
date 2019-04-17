@@ -3,31 +3,49 @@ skinparam shadowing false
 left to right direction
 
 ' 4.4. Face Recognition -> FR
-
-:Camera: -- (FR03. Send Image)
-
-' 4.11 Voice Communication -> VC
-:Microphones: -- (VC01. Send Sound)
+(FR04. Send Image) as FR04
 
 ' 4.10. Functionality of Smart Service Developers -> SD
-:Service Provider: - (SD01. Register Service)
-:Service Provider: -- (SD02. Register\n Service App)
-:Service Provider: -- (SD03. Unregister Service)
-:Service Provider: -- (SD04. Unregister\n Service App)
-:Service Provider: -- (SD05. Update Service)
-:Service Provider: -- (SD06. Update\n Service App)
-(SD07. Update\n Servie Description) -- :Service Provider:
-(SD08. Update\n Billing Condition) -- :Service Provider:
-(SD09. Request App\n Conformance Test)
-(SD10. Receive App\n Conformance Result) -- :Service Provider:
-(SD11. Browse\n Subscription Detail) -- :Service Provider:
-(SD12. Check\n Payment Detail) -- :Service Provider:
-(SD13. Get\n User Preferences) - :Service Provider:
+(SD01. Register Service) as SD01
+(SD02. Register\n Service App) as SD02
+(SD03. Unregister Service) as SD03
+(SD04. Unregister\n Service App) as SD04
+(SD05. Update Service) as SD05
+(SD06. Update\n Service App) as SD06
+(SD07. Update\n Servie Description) as SD07
+(SD08. Update\n Billing Condition) as SD08
+(SD09. Request App\n Conformance Test) as SD09
+(SD10. Receive App\n Conformance Result) as SD10
+(SD11. Browse\n Subscription Detail) as SD11
+(SD12. Check\n Payment Detail) as SD12
+(SD13. Get\n User Preferences) as SD13
+(SD14. Check App\n Conformance Requests) as SD14
+(SD15. Write App\n Conformance Result) as SD15
 
-(SD14. Check App\n Conformance Requests) -- :Tester:
-:Tester: -- (SD13. Write App\n Conformance Result)
+' 4.11 Voice Communication -> VC
+(VC01. Send Sound) as VC01
 
-(SD09. Request App\n Conformance Test) <.. (SD02. Register\n Service App) : <<include>>
-(SD03. Unregister Service) <. (SD04. Unregister\n Service App) : <<extend>>
+:Camera: -- FR04
+
+:Microphones: -- VC01
+
+:Service Provider: - SD01
+:Service Provider: -- SD02
+:Service Provider: -- SD03
+:Service Provider: -- SD04
+:Service Provider: -- SD05
+:Service Provider: -- SD06
+SD07 -- :Service Provider:
+SD08 -- :Service Provider:
+SD10 -- :Service Provider:
+SD11 -- :Service Provider:
+SD12 -- :Service Provider:
+SD13 - :Service Provider:
+
+SD14 -- :Tester:
+:Tester: -- SD15
+
+SD09 <.. SD02 : <<include>>
+SD03 <. SD04 : <<extend>>
 
 @enduml
