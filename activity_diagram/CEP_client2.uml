@@ -20,18 +20,18 @@ repeat:Receive an Request;
     :Receive
      User info.;
     :Send user profile
-     to Cloud;
+     to server;
     :Welcome new user;
   elseif ("Browse Service") then ([yes])
     :Get service list
-    from Cloud;
+    from server;
 
     :Show Smart
      Services;
   elseif ("Run Service\n on Local/Cloud") then ([yes])
-    :Get service info.
-    from Cloud;
-
+    :Get Face ID;
+    :Request service\n recommendation\n from server;
+    :Choose service\n using response;
     :Play the service;
   elseif ("Manage Service\n and app") then ([yes])
     :Manage Service\n and app;
@@ -41,7 +41,9 @@ repeat:Receive an Request;
     :Show TV Channels
      for Broadcast/Cable;
   elseif ("Change channel") then ([yes])
-    :Change channel;
+    :Get Face ID;
+    :Request channel\n recommendation\n from server;
+    :Change channel\n using response;
   elseif ("Enable/Disable\n voice command") then ([yes])
     :Ask voice\n recognition agent\n to pause/resume;
   elseif ("Manage user profile",\nor\n "Browse payment history"\nor\n  "Update credicard info"\nor\n "Get bill for service"\nor\n "Pay with credicard"\nor\n "Organize menu Layout") then ([yes])

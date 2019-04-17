@@ -5,17 +5,24 @@ start
 fork
 
 repeat:Receive a general request;
-
-  if ("Request\n conformance test") then ([yes])
+  -> if the "Request" is;
+  if ("Inform new\n conformance test\n request") then ([yes])
     :Store the app;
     :Inform Tester\n of new app;
-  elseif ("Receive app\n conformance\n result") then ([yes])
+  elseif ("Report app\n conformance\n result") then ([yes])
     :Report\n Tester's review;
-  elseif ("Check app\n conformance\n request") then ([yes])
-    :Show\n Requested apps;
+  ' 아래는 Tester가 Console로 로그인해서 본인에게 요청된 테스트 요청을 확인하는 것
+  ' 인데 생각해 보니, 사용자가로그인 했을 때 화면상으로 보여줘야겠네
+  ' elseif ("Show\n conformance\n requests") then ([yes])
+  '  :Show\n requested apps;
   elseif ("Write app\n conformance\n result") then ([yes])
     :Receive Tester's\n review;
     :Inform Developer\n of "Test Done";
+  elseif ("Retrieve channel\n recommendation") then ([yes])
+    :Check Face ID;
+    :Check user's history;
+    :Run ML Algorithm;
+    :Report recommendation;
   elseif ("Check\n Payment Detail") then ([yes])
     :Gather app list;
     :Gather purchase

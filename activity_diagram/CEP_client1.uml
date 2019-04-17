@@ -46,7 +46,7 @@ while (CPU idle?) is ([yes])
   :Gather user
    activity & log;
   :send to
-   to Cloud;
+   to server;
 endwhile
 
 endfork

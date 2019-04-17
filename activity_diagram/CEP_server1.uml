@@ -24,7 +24,7 @@ fork again
 
 -> Initiate an agent for managing subscription;
 repeat:Receive a subcription-related request;
-
+  -> if the "Request" is;
   if ("Register Service"?) then ([yes])
     if (Conformance Test?) then ([pass])
       :Add Service
@@ -41,6 +41,11 @@ repeat:Receive a subcription-related request;
     :Get list
      from Registry;
     :Deliver the list; 
+  elseif ("Retrieve service\n recommendation") then ([yes])
+    :Check Face ID;
+    :Check user's history;
+    :Run ML Algorithm;
+    :Report recommendation;
   else (Handle other
    requests)
   endif
