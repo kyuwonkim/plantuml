@@ -4,20 +4,47 @@ start
 
 fork
 
--> Initiate an agent\n for learning user preferences;
+-> Initiate ML agent;
 
-repeat:Start learning\n analytics;
+repeat:Start learning\n ML Models;
 
-if (New user datasets
- from SST Client?) then ([yes])
+if (CPU idle?) then ([yes])
 
   :Train new ML model;
 
   :Deploy new ML model
-   for user preferences
-   and patterns;
-else ([no]) 
+   for analytics;
+else ([no])
+  :wait 1 min;
 endif 
+repeat while(quit?) is ([no])
+
+fork again
+
+-> Initiate Anaytics agent;
+repeat: Start analyzing\n preferences\n and trends
+if (CPU idle?) then ([yes])
+  :Analyze preferences;
+  :Analyze trends;
+else ([no])
+  :wait 1 min;
+endif
+repeat while (quit?) is ([no])
+
+fork again
+
+-> Initiate Payment agent;
+
+repeat:Wait 15 days;
+
+if (Bill time?) then ([yes])
+  :Check purchased\n services and\n plans;
+  :Generate bills;
+  :Store bills to DB;
+  :Report bills\n to users;
+else ([no])
+  :Make payments\n with registered\n creditcards\naccording to bills;
+endif     
 repeat while(quit?) is ([no])
 
 fork again

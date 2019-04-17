@@ -42,12 +42,17 @@ repeat while (quit?) is ([no])
 fork again
 
 -> Initiate an agent\n for activity upload;
-while (CPU idle?) is ([yes])
+repeat: Start uploading\n activity;
+if (CPU idle?) then ([yes])
   :Gather user
    activity & log;
   :send to
    to server;
-endwhile
+else ([no])
+  :wait 1 min;
+endif
+
+repeat while (quit?) is ([no])
 
 endfork
 

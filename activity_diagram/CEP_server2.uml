@@ -29,6 +29,8 @@ repeat:Receive a general request;
      history;
     :Calculate;
     :Report\n payment detail;
+  elseif ("Generate Bill") then ([yes])
+    :Send bill\n to the user;
   else (Handle other
    requests)
   endif
