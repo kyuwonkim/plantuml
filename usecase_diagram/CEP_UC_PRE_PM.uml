@@ -1,6 +1,7 @@
 @startuml
 skinparam shadowing false
 left to right direction
+skinparam backgroundcolor transparent
 
 ' Payment Management -> PM
 (PM01. Get Bill\n For Service) as PM01

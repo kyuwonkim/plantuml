@@ -1,6 +1,7 @@
 @startuml
 skinparam shadowing false
 left to right direction
+skinparam backgroundcolor transparent
 
 ' Channel Management -> CM
 (CM01. Receive\n Broadcast\n TV Channels) as CM01

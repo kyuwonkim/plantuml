@@ -1,6 +1,7 @@
 @startuml
 skinparam shadowing false
 left to right direction
+skinparam backgroundcolor transparent
 
 ' Service Developers -> SD
 (SD01. Register Service) as SD01
