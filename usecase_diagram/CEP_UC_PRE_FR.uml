@@ -1,0 +1,37 @@
+@startuml
+skinparam shadowing false
+left to right direction
+
+' Face Recognition -> FR
+(FR01. Enroll Face) as FR01
+(FR02. Show Face) as FR02
+(FR03. Leave\n Viewing Area) as FR03
+(FR04. Send Image) as FR04
+
+(CM09. Receive Channels) as CM09
+
+(UP01. SignUp SST) as UP01
+
+(CM10. Play Channel) as CM10
+
+(SS09. Play Service) as SS09
+
+(SS01. Browse Service) as SS01
+
+FR01 .> UP01 : <<extend>>
+CM09 ..> FR02 : <<include>>
+CM10 ..> FR02 : <<include>>
+
+SS09 ..> FR02 : <<include>>
+SS01 ..> FR02 : <<include>>
+
+:Camera: -- FR04
+
+:User: --- FR03
+:User: --> CM09
+:User: --> CM10
+:User: --> SS09
+:User: --> SS01
+:User: ---> UP01
+
+@enduml

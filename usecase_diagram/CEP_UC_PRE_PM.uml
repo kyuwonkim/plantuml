@@ -1,0 +1,14 @@
+@startuml
+skinparam shadowing false
+left to right direction
+
+' Payment Management -> PM
+(PM01. Get Bill\n For Service) as PM01
+(PM02. Pay With\n Creditcard) as PM02
+(PM03. Browse\n Payment History) as PM03
+
+:User: -- PM01
+:User: -- PM02
+:User: -- PM03
+
+@enduml
