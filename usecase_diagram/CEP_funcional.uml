@@ -1,0 +1,155 @@
+@startuml
+skinparam shadowing false
+left to right direction
+
+' 4.2. Receiving Broadcast TV Channels -> RB
+(CM01. Receive\n Broadcast\n TV Channels) as CM01
+(CM02. Play\n Broadcast TV) as CM02
+(CM03. Stop Playing\n Broadcast TV) as CM03
+(CM04. Change\n Broadcast TV) as CM04
+
+' 4.3. Receiving Cable TV Channels -> RC
+(CM05. Receive\n Cable TV Channels) as CM05
+(CM06. Play Cable TV) as CM06
+(CM07. Stop\n Playing Cable TV) as CM07
+
+' 4.4. Face Recognition -> FR
+(FR01. Enroll Face) as FR01
+(FR02. Show Face) as FR02
+(FR03. Leave\n Viewing Area) as FR03
+(FR04. Send Image) as FR04
+
+' 4.5. Subscribing Smart Services -> SS
+(SS01. Browse Service) as SS01
+(SS02. Subscribe Service) as SS02
+(SS03. Unsubscribe Service) as SS03
+(SS04. Install\n Service App) as SS04
+(SS05. Run Service\n on Local) as SS05
+(SS06. Run Service\n on Cloud) as SS06
+(SS07. Check\n My Subscriptions) as SS07
+(SS08. Write Review\n For Service) as SS08
+(SS09. Play Service) as SS09
+(SS10. Stop\n Playing Service) as SS10
+(SS11. Change Service) as SS11
+
+' 4.6. Centralized Payment Services -> PS
+(PS01. Get Bill\n For Service) as PS01
+(PS02. Pay With\n Creditcard) as PS02
+(PS03. Browse\n Payment History) as PS03
+
+' 4.8. User Profile Management -> UP
+(UP01. SignUp SST) as UP01
+(UP02. Retrieve Profile) as UP02
+(UP03. Update Profile) as UP03
+(UP04. Update\n Creditcard Info.) as UP04
+
+' 4.9. User Interface Manager -> UI
+(UI01. Orgarnize\n Menu Layout) as UI01
+
+' 4.10. Functionality of Smart Service Developers -> SD
+(SD01. Register Service) as SD01
+(SD02. Register\n Service App) as SD02
+(SD03. Unregister Service) as SD03
+(SD04. Unregister\n Service App) as SD04
+(SD05. Update Service) as SD05
+(SD06. Update\n Service App) as SD06
+(SD07. Update\n Servie Description) as SD07
+(SD08. Update\n Billing Condition) as SD08
+(SD09. Request App\n Conformance Test) as SD09
+(SD10. Receive App\n Conformance Result) as SD10
+(SD11. Browse\n Subscription Detail) as SD11
+(SD12. Check\n Payment Detail) as SD12
+(SD13. Get\n User Preferences) as SD13
+(SD14. Check App\n Conformance Requests) as SD14
+(SD15. Write App\n Conformance Result) as SD15
+
+' 4.11 Voice Communication -> VC
+(VC01. Send Sound) as VC01
+(VC02. Enable\n Voice Command) as VC02
+(VC03. Disable\n Voice Command) as VC03
+
+''''''''''''''''
+UP01 -- :User:
+UP01 <.. FR01 : <<extend>>
+UP02 -- :User:
+:User: -- UP03
+UP04 -- :User:
+:User: -- (UP05. Deactivate User)
+
+note top of UP01
+  SignUp SST includes
+  entering ID, contact, loin,
+  and creditcard information
+end note
+
+
+(Receive Channels) -- :User:
+(Receive Channels) <|-- CM01
+(Receive Channels) ..> FR02 : <<include>>
+(Play Channel) -- :User:
+(Play Channel) <|-- CM02
+(Play Channel) ..> FR02 : <<include>>
+:User: -- (Stop Playing)
+CM03 --|> (Stop Playing)
+:User: -- (Change Channel)
+CM04 -|> (Change Channel)
+
+(Receive Channels) <|- CM05
+(Play Channel) <|- CM06
+(Stop Playing) <|- CM07
+(RC04. Change\n Cable TV) --|> (Change Channel)
+
+:User: -- FR03
+
+SS01 - :User:
+SS02 -- :User:
+SS03 -- :User:
+SS04 -- :User:
+SS05 -- :User:
+SS06 -- :User:
+:User: -- SS07
+:User: -- SS08
+SS09 -- :User:
+SS09 ..> FR02 : <<include>>
+FR02 <. SS01 : <<include>>
+note top of FR02
+  Reacting to this action,
+  the SST provides personalized
+  services using Activity Analytics
+end note
+SS10 -- :User:
+SS10 ..> (Stop Playing) : <<include>>
+:User: -- SS11
+
+:User: -- PS01
+:User: -- PS02
+:User: -- PS03
+
+:User: -- UI01
+:User: -- VC02
+:User: - VC03
+
+:Camera: -- FR04
+
+:Microphones: -- VC01
+
+:Service Provider: - SD01
+:Service Provider: -- SD02
+:Service Provider: -- SD03
+:Service Provider: -- SD04
+:Service Provider: -- SD05
+:Service Provider: -- SD06
+SD07 -- :Service Provider:
+SD08 -- :Service Provider:
+SD10 -- :Service Provider:
+SD11 -- :Service Provider:
+SD12 -- :Service Provider:
+SD13 - :Service Provider:
+
+SD14 -- :Tester:
+:Tester: -- SD15
+
+SD09 <.. SD02 : <<include>>
+SD03 <. SD04 : <<extend>>
+
+@enduml
