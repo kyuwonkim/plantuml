@@ -7,7 +7,6 @@ skinparam backgroundcolor transparent
 (FR01. Enroll Face) as FR01
 (FR02. Show Face) as FR02
 (FR03. Leave\n Viewing Area) as FR03
-(FR04. Send Image) as FR04
 
 (CM09. Receive Channels) as CM09
 
@@ -19,20 +18,18 @@ skinparam backgroundcolor transparent
 
 (SS01. Browse Service) as SS01
 
-FR01 .> UP01 : <<extend>>
+UP01 <.. FR01 : <<extend>>
 CM09 ..> FR02 : <<include>>
 CM10 ..> FR02 : <<include>>
 
 SS09 ..> FR02 : <<include>>
 SS01 ..> FR02 : <<include>>
 
-:Camera: -- FR04
-
 :User: --- FR03
 :User: --> CM09
 :User: --> CM10
 :User: --> SS09
 :User: --> SS01
-:User: ---> UP01
+:User: -- UP01 
 
 @enduml
