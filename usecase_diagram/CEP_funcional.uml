@@ -2,24 +2,26 @@
 skinparam shadowing false
 left to right direction
 
-' 4.2. Receiving Broadcast TV Channels -> RB
+' Channel Management -> CM
 (CM01. Receive\n Broadcast\n TV Channels) as CM01
 (CM02. Play\n Broadcast TV) as CM02
 (CM03. Stop Playing\n Broadcast TV) as CM03
 (CM04. Change\n Broadcast TV) as CM04
-
-' 4.3. Receiving Cable TV Channels -> RC
 (CM05. Receive\n Cable TV Channels) as CM05
 (CM06. Play Cable TV) as CM06
 (CM07. Stop\n Playing Cable TV) as CM07
+(CM08. Change\n Cable TV) as CM08
+(CM09. Receive Channels) as CM09
+(CM10. Play Channel) as CM10
+(CM11. Change Channel) as CM11
 
-' 4.4. Face Recognition -> FR
+' Face Recognition -> FR
 (FR01. Enroll Face) as FR01
 (FR02. Show Face) as FR02
 (FR03. Leave\n Viewing Area) as FR03
 (FR04. Send Image) as FR04
 
-' 4.5. Subscribing Smart Services -> SS
+' Smart Service -> SS
 (SS01. Browse Service) as SS01
 (SS02. Subscribe Service) as SS02
 (SS03. Unsubscribe Service) as SS03
@@ -32,21 +34,21 @@ left to right direction
 (SS10. Stop\n Playing Service) as SS10
 (SS11. Change Service) as SS11
 
-' 4.6. Centralized Payment Services -> PS
-(PS01. Get Bill\n For Service) as PS01
-(PS02. Pay With\n Creditcard) as PS02
-(PS03. Browse\n Payment History) as PS03
+' Payment Management -> PM
+(PM01. Get Bill\n For Service) as PM01
+(PM02. Pay With\n Creditcard) as PM02
+(PM03. Browse\n Payment History) as PM03
 
-' 4.8. User Profile Management -> UP
+' User Profile Management -> UP
 (UP01. SignUp SST) as UP01
 (UP02. Retrieve Profile) as UP02
 (UP03. Update Profile) as UP03
 (UP04. Update\n Creditcard Info.) as UP04
 
-' 4.9. User Interface Manager -> UI
-(UI01. Orgarnize\n Menu Layout) as UI01
+' User Setting Management -> US
+(US01. Orgarnize\n Menu Layout) as US01
 
-' 4.10. Functionality of Smart Service Developers -> SD
+' Service Developers -> SD
 (SD01. Register Service) as SD01
 (SD02. Register\n Service App) as SD02
 (SD03. Unregister Service) as SD03
@@ -83,21 +85,20 @@ note top of UP01
 end note
 
 
-(Receive Channels) -- :User:
-(Receive Channels) <|-- CM01
-(Receive Channels) ..> FR02 : <<include>>
-(Play Channel) -- :User:
-(Play Channel) <|-- CM02
-(Play Channel) ..> FR02 : <<include>>
-:User: -- (Stop Playing)
-CM03 --|> (Stop Playing)
-:User: -- (Change Channel)
-CM04 -|> (Change Channel)
+CM09 -- :User:
+CM09 <|-- CM01
+CM09 ..> FR02 : <<include>>
+CM10 -- :User:
+CM10 <|-- CM02
+CM10 ..> FR02 : <<include>>
+:User: -- CM03
+:User: -- CM11
+CM04 -|> CM11
 
-(Receive Channels) <|- CM05
-(Play Channel) <|- CM06
-(Stop Playing) <|- CM07
-(RC04. Change\n Cable TV) --|> (Change Channel)
+CM09 <|- CM05
+CM10 <|- CM06
+:User: -- CM07
+CM08 --|> CM11
 
 :User: -- FR03
 
@@ -121,11 +122,11 @@ SS10 -- :User:
 SS10 ..> (Stop Playing) : <<include>>
 :User: -- SS11
 
-:User: -- PS01
-:User: -- PS02
-:User: -- PS03
+:User: -- PM01
+:User: -- PM02
+:User: -- PM03
 
-:User: -- UI01
+:User: -- US01
 :User: -- VC02
 :User: - VC03
 

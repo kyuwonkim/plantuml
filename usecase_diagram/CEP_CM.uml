@@ -1,0 +1,38 @@
+@startuml
+skinparam shadowing false
+left to right direction
+
+' Channel Management -> CM
+(CM01. Receive\n Broadcast\n TV Channels) as CM01
+(CM02. Play\n Broadcast TV) as CM02
+(CM03. Stop Playing\n Broadcast TV) as CM03
+(CM04. Change\n Broadcast TV) as CM04
+(CM05. Receive\n Cable TV Channels) as CM05
+(CM06. Play Cable TV) as CM06
+(CM07. Stop\n Playing Cable TV) as CM07
+(CM08. Change\n Cable TV) as CM08
+(CM09. Receive Channels) as CM09
+(CM10. Play Channel) as CM10
+(CM11. Change Channel) as CM11
+(CM12. Stop Channel) as CM12
+
+(FR02. Show Face) as FR02
+
+CM09 -- :User:
+CM01 -|> CM09
+CM09 ..> FR02 : <<include>>
+CM10 -- :User:
+CM10 <|-- CM02
+CM10 ..> FR02 : <<include>>
+
+CM03 --|> CM12
+CM07 -|> CM12
+:User: -- CM12
+
+:User: -- CM11
+CM04 -|> CM11
+CM09 <|- CM05
+CM10 <|- CM06
+CM08 --|> CM11
+
+@enduml
