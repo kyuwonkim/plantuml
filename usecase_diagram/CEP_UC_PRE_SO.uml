@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+left to right direction
+skinparam backgroundcolor transparent
+
+' Setting Option Management -> US
+(SO01. Organize\n Menu Layout) as SO01
+(SO02. Enable\n Voice Command) as SO02
+(SO03. Disable\n Voice Command) as SO03
+
+:User: -- SO01
+:User: -- SO02
+:User: -- SO03
+
+@enduml

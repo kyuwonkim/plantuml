@@ -10,7 +10,7 @@ skinparam backgroundcolor transparent
 (SD04. Unregister\n Service App) as SD04
 (SD05. Update Service) as SD05
 (SD06. Update\n Service App) as SD06
-(SD07. Update\n Servie Description) as SD07
+(SD07. Update\n Service Description) as SD07
 (SD08. Update\n Billing Condition) as SD08
 (SD09. Request App\n Conformance Test) as SD09
 (SD10. Receive App\n Conformance Result) as SD10

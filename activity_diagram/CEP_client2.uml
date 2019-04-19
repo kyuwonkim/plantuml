@@ -30,23 +30,29 @@ repeat:Receive an Request;
      Services;
   elseif ("Run Service\n on Local/Cloud") then ([yes])
     :Get Face ID;
-    :Request service\n recommendation\n from server;
-    :Choose service\n using response;
-    :Play the service;
-  elseif ("Manage Service\n and app") then ([yes])
-    :Manage Service\n and app;
+    if (Enrolled user?) then ([yes])
+      :Request service\n recommendation\n from server;
+      :Choose service\n using response;
+      :Play the service;
+    else ([no])
+      :Play previous one;
+    endif
   elseif ("Receive\nTV Channels for\n Broadcast/Cable") then ([yes])
     :Get channel list;
 
     :Show TV Channels
      for Broadcast/Cable;
-  elseif ("Change channel") then ([yes])
+  elseif ("Play channel") then ([yes])
     :Get Face ID;
-    :Request channel\n recommendation\n from server;
-    :Change channel\n using response;
+    if (Enrolled user?) then ([yes])
+      :Request channel\n recommendation\n from server;
+      :Play channel\n using response;
+    else ([np])
+      :Play previous one;
+    endif
   elseif ("Enable/Disable\n voice command") then ([yes])
     :Ask voice\n recognition agent\n to pause/resume;
-  elseif ("Manage user profile",\nor\n "Browse payment history"\nor\n  "Update credicard info"\nor\n "Get bill for service"\nor\n "Pay with credicard"\nor\n "Organize menu Layout") then ([yes])
+  elseif ("Manage user profile",\nor\n "Browse payment history"\nor\n  "Update credicard info"\nor\n "Get bill for service"\nor\n "Pay with credicard"\nor\n "Organize menu Layout"\nor\n"Manage Service\n and app") then ([yes])
     :Do the requested action;
   else (Handle other
    requests)

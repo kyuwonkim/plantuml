@@ -15,15 +15,16 @@ skinparam backgroundcolor transparent
 (SS09. Play Service) as SS09
 (SS10. Stop\n Playing Service) as SS10
 (SS11. Change Service) as SS11
+(SS12. Auto-configure Service) as SS12
 
 (FR02. Show Face) as FR02
 
-SS01 - :User:
+SS01 -- :User:
 SS02 -- :User:
 SS03 -- :User:
 SS04 -- :User:
-SS05 -- :User:
-SS06 -- :User:
+SS05 --|> SS09
+SS06 --|> SS09
 :User: -- SS07
 :User: -- SS08
 :User: -- SS09
@@ -31,5 +32,6 @@ FR02 <.. SS09 : <<include>>
 FR02 <. SS01 : <<include>>
 :User: -- SS10 
 :User: -- SS11
+SS12 .> SS09 : <<extend>>
 
 @enduml

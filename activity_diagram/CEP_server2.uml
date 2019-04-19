@@ -18,7 +18,7 @@ repeat:Receive a general request;
   elseif ("Write app\n conformance\n result") then ([yes])
     :Receive Tester's\n review;
     :Inform Developer\n of "Test Done";
-  elseif ("Retrieve channel\n recommendation") then ([yes])
+  elseif ("Retrieve\n service/channel\n recommendation") then ([yes])
     :Check Face ID;
     :Check user's history;
     :Run ML Algorithm;

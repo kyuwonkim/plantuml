@@ -15,19 +15,19 @@ if (CPU idle?) then ([yes])
   :Deploy new ML model
    for analytics;
 else ([no])
-  :wait 1 min;
+  :wait 1 min.;
 endif 
 repeat while(quit?) is ([no])
 
 fork again
 
 -> Initiate Anaytics agent;
-repeat: Start analyzing\n preferences\n and trends
+repeat: Start analytics
 if (CPU idle?) then ([yes])
-  :Analyze preferences;
+  :Analyze preferences\n and tendency;
   :Analyze trends;
 else ([no])
-  :wait 1 min;
+  :wait 1 min.;
 endif
 repeat while (quit?) is ([no])
 
@@ -35,14 +35,15 @@ fork again
 
 -> Initiate Payment agent;
 
-repeat:Wait 15 days;
+repeat:Wait 1 day;
 
 if (Bill time?) then ([yes])
   :Check purchased\n services and\n plans;
   :Generate bills;
   :Store bills to DB;
   :Report bills\n to users;
-else ([no])
+elseif (Payment time?) then ([yes])
+  :Retrieve bills\n from DB;
   :Make payments\n with registered\n creditcards\naccording to bills;
 endif     
 repeat while(quit?) is ([no])

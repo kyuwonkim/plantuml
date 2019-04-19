@@ -4,7 +4,7 @@ start
 
 fork
 
--> Initiate Identity Agent;
+-> Initiate Identity agent;
 repeat:Fetch image;
   :Recognize faces\n using stored\n face features;
 
@@ -33,7 +33,7 @@ repeat:Fetch sound;
   if ("Wakeup word"?) then ([no])
   else ([yes])
     :Record following\n command;
-    :Send command\nto a voice\n **smart service**;
+    :Send command\nto voice assistant\n **smart service**;
     :Get response\nfrom the service;
     :Perform its action;
   endif
@@ -41,15 +41,14 @@ repeat while (quit?) is ([no])
 
 fork again
 
--> Initiate an agent\n for activity upload;
+-> Initiate\n User Activity agent;
 repeat: Start uploading\n activity;
 if (CPU idle?) then ([yes])
   :Gather user
    activity & log;
-  :send to
-   to server;
+  :Send to server;
 else ([no])
-  :wait 1 min;
+  :wait 1 min.;
 endif
 
 repeat while (quit?) is ([no])
