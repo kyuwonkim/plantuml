@@ -18,12 +18,15 @@ repeat:Receive a general request;
   elseif ("Write app\n conformance\n result") then ([yes])
     :Receive Tester's\n review;
     :Inform Developer\n of "Test Done";
+  elseif ("Store\n user activity") then ([yes])
+    :Check Face ID;
+    :Store to\n user session\n for analytics;
   elseif ("Retrieve\n service/channel\n recommendation") then ([yes])
     :Check Face ID;
     :Check user's history;
     :Run ML Algorithm;
     :Report recommendation;
-  elseif ("Check\n Payment Detail") then ([yes])
+  elseif ("Show Payments") then ([yes])
     :Gather app list;
     :Gather purchase
      history;

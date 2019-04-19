@@ -73,7 +73,7 @@ repeat:Receive a subcription-related request;
     :Check Face ID;
     :Check user's history;
     :Run ML Algorithm;
-    :Report recommendation;
+    :Report\n recommendation;
   else (Handle other
    requests)
   endif

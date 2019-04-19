@@ -17,10 +17,10 @@ repeat:Fetch image;
     :Choose
      top-rank face;
     if (Different face\n from Session?) then ([yes])
+      :Open session;
       :Greet user;
     else ([no])
     endif
-    :Renew session;
   endif
 repeat while (quit?) is ([no])
 
@@ -42,7 +42,7 @@ repeat while (quit?) is ([no])
 fork again
 
 -> Initiate\n User Activity agent;
-repeat: Start uploading\n activity;
+repeat: Start uploading activity;
 if (CPU idle?) then ([yes])
   :Gather user
    activity & log;
