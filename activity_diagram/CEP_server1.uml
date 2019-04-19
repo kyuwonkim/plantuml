@@ -70,7 +70,7 @@ repeat:Receive a subcription-related request;
      from Registry;
     :Deliver the list; 
   elseif ("Retrieve service\n recommendation") then ([yes])
-    :Check Face ID;
+    :Check User ID;
     :Check user's history;
     :Run ML Algorithm;
     :Report\n recommendation;

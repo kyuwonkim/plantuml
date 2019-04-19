@@ -29,7 +29,7 @@ repeat:Receive an Request;
     :Show Smart
      Services;
   elseif ("Run Service\n on Local/Cloud") then ([yes])
-    :Get Face ID;
+    :Get User ID;
     if (Enrolled user?) then ([yes])
       :Request service\n recommendation\n from server;
       :Choose service\n using response;
@@ -43,7 +43,7 @@ repeat:Receive an Request;
     :Show TV Channels
      for Broadcast/Cable;
   elseif ("Play channel") then ([yes])
-    :Get Face ID;
+    :Get User ID;
     if (Enrolled user?) then ([yes])
       :Request channel\n recommendation\n from server;
       :Play channel\n using response;

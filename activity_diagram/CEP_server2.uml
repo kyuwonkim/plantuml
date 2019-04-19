@@ -19,10 +19,10 @@ repeat:Receive a general request;
     :Receive Tester's\n review;
     :Inform Developer\n of "Test Done";
   elseif ("Store\n user activity") then ([yes])
-    :Check Face ID;
+    :Check User ID;
     :Store to\n user session\n for analytics;
   elseif ("Retrieve\n service/channel\n recommendation") then ([yes])
-    :Check Face ID;
+    :Check User ID;
     :Check user's history;
     :Run ML Algorithm;
     :Report recommendation;
