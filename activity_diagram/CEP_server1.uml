@@ -6,28 +6,28 @@ fork
 
 -> Initiate ML agent;
 
-repeat:Start learning\n ML Models;
+repeat:Check newly gathered datasets\n for learning ML Models;
 
-if (CPU idle?) then ([yes])
+if (Large enough to learn?) then ([yes])
 
   :Train new ML model;
 
   :Deploy new ML model
    for analytics;
 else ([no])
-  :wait 1 min.;
+  :wait 10min.;
 endif 
 repeat while(quit?) is ([no])
 
 fork again
 
 -> Initiate Anaytics agent;
-repeat: Start analytics
+repeat: Check CPU utilization\n for analytics
 if (CPU idle?) then ([yes])
   :Analyze preferences\n and tendency;
   :Analyze trends;
 else ([no])
-  :wait 1 min.;
+  :wait 1min.;
 endif
 repeat while (quit?) is ([no])
 
@@ -35,7 +35,7 @@ fork again
 
 -> Initiate Payment agent;
 
-repeat:Wait 1 day;
+repeat: <img:https://chammoru.github.io/timer.png>\nDaily;
 
 if (Billing time?) then ([yes])
   :Check purchased\n services and\n plans;
