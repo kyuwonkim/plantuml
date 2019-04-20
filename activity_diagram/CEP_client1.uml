@@ -48,7 +48,7 @@ if (CPU idle?) then ([yes])
    activity & log;
   :Send to server;
 else ([no])
-  :wait 1 min.;
+  :wait 1min.;
 endif
 
 repeat while (quit?) is ([no])

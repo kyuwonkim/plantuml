@@ -11,7 +11,7 @@ repeat:Check newly gathered datasets\n for learning ML Models;
 if (Large enough to learn?) then ([yes])
 
   :Train new ML model;
-
+  :Calibrate ML model;
   :Deploy new ML model
    for analytics;
 else ([no])
