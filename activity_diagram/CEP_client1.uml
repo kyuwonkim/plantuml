@@ -6,7 +6,7 @@ fork
 
 -> Initiate Identity agent;
 repeat:Fetch image;
-  :Recognize faces\n using stored\n face features;
+  :Recognize faces using\n stored face features;
 
   :Count enrolled faces;
 
@@ -34,15 +34,15 @@ repeat:Fetch sound;
   else ([yes])
     :Record following\n command;
     :Send command\nto voice assistant\n **smart service**;
-    :Get response\nfrom the service;
-    :Perform its action;
+    :Get instruction\nfrom the service;
+    :Perform action\n as instruction;
   endif
 repeat while (quit?) is ([no])
 
 fork again
 
 -> Initiate\n User Activity agent;
-repeat: Start uploading activity;
+repeat: Check CPU utilization;
 if (CPU idle?) then ([yes])
   :Gather user
    activity & log;

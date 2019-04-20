@@ -47,7 +47,7 @@ repeat:Receive an Request;
     if (Enrolled user?) then ([yes])
       :Request channel\n recommendation\n from server;
       :Play channel\n using response;
-    else ([np])
+    else ([no])
       :Play previous one;
     endif
   elseif ("Enable/Disable\n voice command") then ([yes])
