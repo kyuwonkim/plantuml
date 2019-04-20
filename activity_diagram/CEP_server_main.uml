@@ -4,6 +4,7 @@ start
 
 fork
 
+-> Initiate a thread for managing general requests;
 repeat:Receive a general request;
   -> if the "Request" is;
   if ("Inform new\n conformance test\n request") then ([yes])
