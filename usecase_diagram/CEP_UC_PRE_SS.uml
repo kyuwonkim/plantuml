@@ -32,6 +32,6 @@ FR02 <.. SS09 : <<include>>
 FR02 <. SS01 : <<include>>
 :User: -- SS10 
 :User: -- SS11
-SS12 .> SS09 : <<extend>>
+SS09 <. SS12 : <<extend>>
 
 @enduml

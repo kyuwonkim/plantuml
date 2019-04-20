@@ -12,7 +12,7 @@ skinparam backgroundcolor transparent
 (FR01. Enroll Face) as FR01
 
 UP01 -- :User:
-UP01 <.. FR01 : <<extend>>
+FR01 .> UP01 : <<extend>>
 UP02 -- :User:
 :User: -- UP03
 :User: -- UP04
