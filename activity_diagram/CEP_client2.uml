@@ -43,7 +43,6 @@ repeat:Receive an Request;
       :Play channel\n using response;
     else ([no])
       :Play previous one;
-      :<img:https://chammoru.github.io/timer.png>\nwaa;
     endif
   else ([Other simple requests such as:\n "Manage user profile",\n "Browse payment history",\n "Update creditcard info",\n "Get bill for service", "Pay with creditcard"\n "Organize menu Layout",\n "Manage Service and app"])
     :Do the\n requested action;
