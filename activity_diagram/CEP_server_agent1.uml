@@ -15,19 +15,20 @@ if (Large enough to learn?) then ([yes])
   :Deploy new ML model
    for analytics;
 else ([no])
-  :wait 10min.;
+  :Wait 10min.;
 endif 
 repeat while(quit?) is ([no])
 
 fork again
 
 -> Initiate Anaytics agent;
-repeat: Check CPU utilization\n for analytics
-if (CPU idle?) then ([yes])
+repeat: Evaluate Anaytics\n Performance
+if (High?) then ([yes])
+  :Wait a day;
+else ([no])
   :Analyze preferences\n and tendency;
   :Analyze trends;
-else ([no])
-  :wait 1min.;
+  :Store analytics results\n to persistent DB;
 endif
 repeat while (quit?) is ([no])
 
@@ -44,7 +45,7 @@ if (Billing time?) then ([yes])
   :Report bills\n to users;
 elseif (Payment time?) then ([yes])
   :Retrieve bills\n from DB;
-  :Make payments\n with registered\n creditcards\naccording to bills;
+  :Make payments\n with registered\n creditcards\n according to bills;
 endif     
 repeat while(quit?) is ([no])
 
