@@ -5,11 +5,9 @@ start
 fork
 
 ->Initiate UI thread;
-
 repeat:Receive an Request;
 
   -> if the "Request" is;
-
   if ("Sign Up for SST") then ([yes])
     repeat:Start 'Enroll Face';
       :Fetch image;
@@ -17,45 +15,38 @@ repeat:Receive an Request;
        unenrolled faces;
     repeat while (count == 1) is ([no])
     :Store face features\n in Anaytics;
-    :Receive
-     User info.;
+    :Receive User info.;
     :Send user profile
      to server;
     :Welcome new user;
   elseif ("Browse Service") then ([yes])
-    :Get service list
-    from server;
-
-    :Show Smart
-     Services;
+    :Verify face;
+    :Get service list\n from server;
+    :Show list of\n Smart Services;
   elseif ("Run Service\n on Local/Cloud") then ([yes])
-    :Get User ID;
+    :Verify face;
     if (Enrolled user?) then ([yes])
       :Request service\n recommendation\n from server;
       :Choose service\n using response;
       :Play the service;
     else ([no])
-      :Play previous one;
+      :Play recent one;
     endif
   elseif ("Receive\nTV Channels for\n Broadcast/Cable") then ([yes])
-    :Get channel list;
-
+    :Verify face;
+    :Get channel list\n from server;
     :Show TV Channels
      for Broadcast/Cable;
   elseif ("Play channel") then ([yes])
-    :Get User ID;
+    :Verify face;
     if (Enrolled user?) then ([yes])
       :Request channel\n recommendation\n from server;
       :Play channel\n using response;
     else ([no])
       :Play previous one;
     endif
-  elseif ("Enable/Disable\n voice command") then ([yes])
-    :Ask voice\n recognition agent\n to pause/resume;
-  elseif ("Manage user profile",\nor\n "Browse payment history"\nor\n  "Update credicard info"\nor\n "Get bill for service"\nor\n "Pay with credicard"\nor\n "Organize menu Layout"\nor\n"Manage Service\n and app") then ([yes])
-    :Do the requested action;
-  else (Handle other
-   requests)
+  else ([Other requests, such as "Manage user profile",\n "Browse payment history", "Update credicard info",\n "Get bill for service", "Pay with credicard"\n "Organize menu Layout", "Manage Service and app"])
+    :Do the\n requested action;
   endif
 
 repeat while (quit?) is ([no])

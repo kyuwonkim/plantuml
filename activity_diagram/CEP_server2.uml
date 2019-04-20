@@ -34,8 +34,7 @@ repeat:Receive a general request;
     :Report\n payment detail;
   elseif ("Generate Bill") then ([yes])
     :Send bill\n to the user;
-  else (Handle other
-   requests)
+  else ([Other requests])
   endif
 
 repeat while (quit?) is ([no])

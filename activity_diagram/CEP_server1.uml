@@ -37,7 +37,7 @@ fork again
 
 repeat:Wait 1 day;
 
-if (Bill time?) then ([yes])
+if (Billing time?) then ([yes])
   :Check purchased\n services and\n plans;
   :Generate bills;
   :Store bills to DB;
@@ -74,8 +74,7 @@ repeat:Receive a subcription-related request;
     :Check user's history;
     :Run ML Algorithm;
     :Report\n recommendation;
-  else (Handle other
-   requests)
+  else ([Other requests])
   endif
 
 repeat while (quit?) is ([no])
