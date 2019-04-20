@@ -22,7 +22,7 @@ repeat while(quit?) is ([no])
 fork again
 
 -> Initiate Anaytics agent;
-repeat: Evaluate Anaytics\n Performance
+repeat: Evaluate anaytics\n performance
 if (High?) then ([yes])
   :Wait a day;
 else ([no])

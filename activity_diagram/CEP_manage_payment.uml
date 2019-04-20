@@ -1,0 +1,25 @@
+@startuml
+start
+-> Get a request "Get Bill for Service";
+
+:Get the user's bill from server;
+
+:Show bill to the user;
+
+:Ask willingness to pay now;
+
+if (Pay now?) then ([yes])
+    if (Change creditcard?) then ([yes])
+        :Let the user\n "Update creditcard info";
+    else ([no])
+
+    endif
+    
+    :Let the user\n "Pay with card";
+    :Let the user\n "Browse payment history";
+else ([no])
+    :Stick to the monthly\n payment policy;
+endif
+
+stop
+@enduml
