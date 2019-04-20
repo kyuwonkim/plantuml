@@ -45,7 +45,7 @@ repeat:Receive an Request;
     else ([no])
       :Play previous one;
     endif
-  else ([Other requests, such as "Manage user profile",\n "Browse payment history", "Update credicard info",\n "Get bill for service", "Pay with credicard"\n "Organize menu Layout", "Manage Service and app"])
+  else ([Other simple requests such as:\n "Manage user profile",\n "Browse payment history",\n "Update creditcard info",\n "Get bill for service", "Pay with creditcard"\n "Organize menu Layout",\n "Manage Service and app"])
     :Do the\n requested action;
   endif
 
