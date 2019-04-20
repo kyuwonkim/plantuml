@@ -7,8 +7,7 @@ skinparam backgroundcolor transparent
 (UP01. SignUp SST) as UP01
 (UP02. Retrieve Profile) as UP02
 (UP03. Update Profile) as UP03
-(UP04. Update\n Creditcard Info.) as UP04
-(UP05. Deactivate User) as UP05
+(UP04. Deactivate User) as UP04
 
 (FR01. Enroll Face) as FR01
 
@@ -16,7 +15,6 @@ UP01 -- :User:
 UP01 <.. FR01 : <<extend>>
 UP02 -- :User:
 :User: -- UP03
-UP04 -- :User:
-:User: -- UP05
+:User: -- UP04
 
 @enduml

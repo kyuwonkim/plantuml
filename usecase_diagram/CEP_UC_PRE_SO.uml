@@ -10,6 +10,6 @@ skinparam backgroundcolor transparent
 
 :User: -- SO01
 :User: -- SO02
-:User: -- SO03
+SO03 -- :User:
 
 @enduml
