@@ -1,0 +1,39 @@
+@startuml
+start
+:SST Cloud Server: Intiailize server;
+
+fork
+
+-> Initiate an agent for managing subscription;
+repeat:Receive a subcription-related request;
+  -> if the "Request" is;
+  if ("Register Service"?) then ([yes])
+    if (Conformance Test?) then ([pass])
+      :Add Service
+       to Registry;
+    else ([not pass])
+      :Request
+       conformance;
+    endif
+    
+  elseif ("Manage Service\n and app"?) then ([yes])
+    :Manage Service\n and app;
+
+  elseif ("Get service\n list"?) then ([yes])
+    :Get list
+     from Registry;
+    :Deliver the list; 
+  elseif ("Retrieve service\n recommendation") then ([yes])
+    :Check User ID;
+    :Check user's history;
+    :Run ML Algorithm;
+    :Report\n recommendation;
+  else ([Other requests])
+  endif
+
+repeat while (quit?) is ([no])
+
+endfork
+
+stop
+@enduml
