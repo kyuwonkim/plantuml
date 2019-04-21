@@ -1,0 +1,15 @@
+@startuml
+skinparam shadowing false
+left to right direction
+skinparam backgroundcolor transparent
+
+' Voice Assistant Manager -> VA
+(VA01. Catch "Wakeup word") as VA01
+(VA02. Extract voice command) as VA02
+(VA03. Get feedback\n using command) as VA03
+
+VA01 -- :Voice Assistant Agent:
+VA02 -- :Voice Assistant Agent:
+VA03 -- :Voice Assistant Agent:
+
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+skinparam shadowing false
+left to right direction
+skinparam backgroundcolor transparent
+
+' ML Manager -> ML
+(ML01. Train ML model) as ML01
+(ML02. Deploy ML model) as ML02
+(ML03. Evaluate ML model) as ML03
+
+:ML Agent: as MA
+
+MA -- ML01
+MA -- ML02
+MA -- ML03
+
+@enduml

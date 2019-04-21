@@ -44,6 +44,8 @@ repeat:Receive an Request;
     else ([no])
       :Play previous one;
     endif
+  elseif ("Enable/Disable \n voice command") then ([yes])
+    :turn on/off mic;
   elseif ("Manage\n user\n profile") then ([yes])
     :"Manage\n user\n profile";
   elseif ("Organize\n menu\n Layout") then ([yes])
