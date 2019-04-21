@@ -25,8 +25,8 @@ repeat:Receive a general request;
   elseif ("Retrieve\n service/channel\n recommendation") then ([yes])
     :Check User ID;
     :Check user's history;
-    :Run ML Algorithm;
-    :Report recommendation;
+    :Refer to\n stored Analytics;
+    :Report\n recommendation;
   elseif ("Show Payments") then ([yes])
     :Gather app list;
     :Gather purchase
