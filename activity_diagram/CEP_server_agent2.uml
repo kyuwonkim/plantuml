@@ -16,17 +16,17 @@ repeat:Receive a subcription-related request;
        conformance;
     endif
     
-  elseif ("Manage Service\n and app"?) then ([yes])
-    :Manage Service\n and app;
+  elseif ("Manage Service\n and app") then ([yes])
+    :Manage Service\n and app\n via Registry;
 
-  elseif ("Get service\n list"?) then ([yes])
+  elseif ("Get service list") then ([yes])
     :Get list
      from Registry;
     :Deliver the list; 
   elseif ("Retrieve service\n recommendation") then ([yes])
     :Check User ID;
     :Check user's history;
-    :Run ML Algorithm;
+    :Refer to\n stored Analytics;
     :Report\n recommendation;
   else ([Other requests])
   endif
